@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DentApp.controllers.FrmOpciones">
+   <children>
+      <Pane fx:id="p_principal" layoutX="14.0" layoutY="59.0" prefHeight="341.0" prefWidth="573.0">
+         <children>
+            <ImageView fx:id="iv_tratamiento_opciones" fitHeight="96.0" fitWidth="200.0" layoutX="45.0" layoutY="48.0" onMouseClicked="#im_tratamiento_opcionesOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="../images/img_clinica.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="1.0" layoutY="18.0" text="Tipos de tratamiento">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="252.0" layoutY="14.0" text="Pagos">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="422.0" layoutY="14.0" text="Opciones">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="33.0" layoutY="19.0" text="Menú de opciones">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

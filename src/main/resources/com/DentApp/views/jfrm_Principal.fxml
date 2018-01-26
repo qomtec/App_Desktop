@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="623.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <ImageView fitHeight="124.0" fitWidth="116.0" layoutX="92.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="../images/img_wall_1.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="218.0" layoutY="31.0" orientation="VERTICAL" prefHeight="578.0" prefWidth="0.0" />
+      <Label layoutX="14.0" layoutY="75.0" text="App">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+       <Label layoutX="58.0" layoutY="75.0" text="Dent">
+           <font>
+               <Font size="24.0" />
+           </font>
+       </Label>
+      <JFXToolbar layoutX="8.0" layoutY="146.0" prefHeight="466.0" prefWidth="208.0" style="-fx-background-color: #3D93B8;">
+         <top>
+            <AnchorPane prefHeight="466.0" prefWidth="208.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton layoutX="3.0" layoutY="25.0" prefHeight="51.0" prefWidth="202.0" text="Clínica" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="3.0" layoutY="85.0" prefHeight="51.0" prefWidth="202.0" text="     Odontólogo" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="3.0" layoutY="154.0" prefHeight="51.0" prefWidth="202.0" text="Paciente" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="4.0" layoutY="221.0" prefHeight="39.0" prefWidth="200.0" text="    Tratamiento" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="4.0" layoutY="281.0" prefHeight="32.0" prefWidth="200.0" text="Pagos" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="11.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="../images/img_Pagos.png" />
+                     </image>
+                  </ImageView>
+
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="14.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="../images/img_clinica.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="10.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="../images/img_odon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="11.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="../images/img_tratamiento.png" />
+                     </image>
+                  </ImageView>
+
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="10.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="../images/img_pac.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </top>
+      </JFXToolbar>
+      <AnchorPane layoutX="-7.0" layoutY="1.0" prefHeight="27.0" prefWidth="809.0" style="-fx-background-color: #B06EBD;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="778.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="../images/img_close.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="12.0" text="Menú principal" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ap_clinica" layoutX="224.0" layoutY="146.0" prefHeight="393.0" prefWidth="571.0" style="-fx-background-color: #A8CF45;" visible="false">
+         <children>
+            <Label layoutX="83.0" layoutY="73.0" text="Código de clínica:" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txt_codigo_clinica" disable="true" editable="false" focusColor="WHITE" layoutX="266.0" layoutY="73.0" prefHeight="25.0" prefWidth="255.0" />
+            <Label layoutX="83.0" layoutY="121.0" text="Nombre de clínica:" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txt_nombre_clinica" focusColor="WHITE" layoutX="266.0" layoutY="121.0" prefHeight="25.0" prefWidth="255.0" promptText="Nombre de la clínica" />
+            <Label layoutX="83.0" layoutY="169.0" text="Nombre del propietario:" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txt_nombre_propietario" focusColor="WHITE" layoutX="266.0" layoutY="169.0" prefHeight="25.0" prefWidth="255.0" promptText="Nombre del propietario" />
+            <Label layoutX="83.0" layoutY="218.0" text="Dirección:" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txt_direccion_clinica" focusColor="WHITE" layoutX="266.0" layoutY="218.0" prefHeight="25.0" prefWidth="255.0" promptText="Dirección" />
+            <Label layoutX="83.0" layoutY="263.0" text="Télefono:" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txt_telefono_clinica" focusColor="WHITE" layoutX="266.0" layoutY="263.0" prefHeight="25.0" prefWidth="255.0" promptText="Télefono" />
+            <Label layoutX="83.0" layoutY="305.0" text="Email:" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txt_email_clinica" focusColor="WHITE" layoutX="266.0" layoutY="305.0" prefHeight="25.0" prefWidth="255.0" promptText="Email" />
+            <Label layoutX="145.0" layoutY="13.0" text="Datos de Clínica" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btn_guardar_clinica" buttonType="RAISED" layoutX="169.0" layoutY="347.0" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #A8B83C;" text="Guardar" />
+            <JFXButton fx:id="btn_cancelar_clinica" buttonType="RAISED" layoutX="316.0" layoutY="347.0" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #E45652;" text="Cancelar" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ap_frm_odontologo" layoutX="224.0" layoutY="146.0" prefHeight="393.0" prefWidth="571.0" style="-fx-background-color: #A8CF45;" visible="false">
+         <children>
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="146.0" layoutY="73.0" prefHeight="25.0" prefWidth="279.0" promptText="Odontólogo" />
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="146.0" layoutY="119.0" prefHeight="25.0" prefWidth="279.0" promptText="No. colegiado" />
+            <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="146.0" layoutY="161.0" prefHeight="25.0" prefWidth="279.0" promptText="Usuario" />
+            <JFXPasswordField focusColor="WHITE" labelFloat="true" layoutX="146.0" layoutY="205.0" prefHeight="25.0" prefWidth="279.0" promptText="Contraseña" />
+            <JFXPasswordField focusColor="WHITE" labelFloat="true" layoutX="146.0" layoutY="250.0" prefHeight="25.0" prefWidth="279.0" promptText="Repetir contraseña" />
+            <Label layoutX="104.0" layoutY="14.0" text="Datos de Odontólogos">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="156.0" layoutY="318.0" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #A8B83C;" text="Guardar" />
+            <JFXButton buttonType="RAISED" layoutX="303.0" layoutY="318.0" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #E45652;" text="Cancelar" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="ap_odontologo" layoutX="224.0" layoutY="146.0" prefHeight="393.0" prefWidth="571.0" style="-fx-background-color: #fffff;" visible="false">
+         <children>
+            <Pane layoutX="7.0" layoutY="100.0" prefHeight="331.0" prefWidth="561.0">
+               <children>
+                  <JFXTextField fx:id="txt_buscar_odontologo" focusColor="WHITE" layoutX="14.0" layoutY="21.0" prefHeight="25.0" prefWidth="193.0" promptText="Busqueda" />
+                  <JFXButton fx:id="btn_buscar_odontologo" layoutX="211.0" layoutY="21.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #428BCA;" text="Buscar" textFill="WHITE" />
+                  <JFXButton fx:id="btn_nuevo_odontologo" layoutX="327.0" layoutY="21.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #5CB85C;" text="Nuevo" textFill="WHITE" />
+                  <JFXButton fx:id="btn_actualizar_odontologo" layoutX="406.0" layoutY="21.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #5BC0DE;" text="Actualizar" textFill="WHITE" />
+                  <JFXButton fx:id="btn_remover_odontologo" layoutX="484.0" layoutY="21.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #D53400;" text="Remover" textFill="WHITE" />
+                  <TableView fx:id="tv_odontologo" layoutX="14.0" layoutY="65.0" prefHeight="250.0" prefWidth="535.0">
+                    <columns>
+                      <TableColumn fx:id="tc_codigo_odontologo" minWidth="0.0" prefWidth="0.0" text="Codigo" />
+                      <TableColumn fx:id="tc_nombre_odontologo" minWidth="0.0" prefWidth="307.0" text="Nombre" />
+                        <TableColumn fx:id="tc_colegiado" prefWidth="79.0" text="Colegiado" />
+                        <TableColumn fx:id="tc_usuario_odontologo" prefWidth="148.0" text="Usuario" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Label layoutX="33.0" layoutY="25.0" styleClass="title-text" text="Administración de Odontólogos">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ap_paciente" layoutX="224.0" layoutY="146.0" prefHeight="393.0" prefWidth="571.0" style="-fx-background-color: #fffff;" visible="false">
+         <children>
+            <Pane layoutX="7.0" layoutY="100.0" prefHeight="331.0" prefWidth="561.0">
+               <children>
+                  <JFXTextField fx:id="txt_buscar_odontologo1" focusColor="WHITE" layoutX="14.0" layoutY="21.0" prefHeight="25.0" prefWidth="193.0" promptText="Busqueda" />
+                  <JFXButton fx:id="btn_buscar_odontologo1" layoutX="211.0" layoutY="21.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #428BCA;" text="Buscar" textFill="WHITE" />
+                  <JFXButton fx:id="btn_nuevo_odontologo1" layoutX="327.0" layoutY="21.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #5CB85C;" text="Nuevo" textFill="WHITE" />
+                  <JFXButton fx:id="btn_actualizar_odontologo1" layoutX="406.0" layoutY="21.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #5BC0DE;" text="Actualizar" textFill="WHITE" />
+                  <JFXButton fx:id="btn_remover_odontologo1" layoutX="484.0" layoutY="21.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #D53400;" text="Remover" textFill="WHITE" />
+                  <TableView fx:id="tv_odontologo1" layoutX="14.0" layoutY="65.0" prefHeight="250.0" prefWidth="535.0">
+                     <columns>
+                        <TableColumn fx:id="tc_codigo_odontologo1" minWidth="0.0" prefWidth="0.0" text="Codigo" />
+                        <TableColumn fx:id="tc_nombre_odontologo1" minWidth="0.0" prefWidth="307.0" text="Nombre" />
+                        <TableColumn fx:id="tc_colegiado1" prefWidth="79.0" text="Colegiado" />
+                        <TableColumn fx:id="tc_usuario_odontologo1" prefWidth="148.0" text="Usuario" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Label layoutX="33.0" layoutY="25.0" styleClass="title-text" text="Administración de Odontólogos">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
