@@ -12,14 +12,35 @@ import javax.crypto.spec.SecretKeySpec;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.CountDownLatch;
 
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
 
 public class GenerateKey {
     private static FirebaseDatabase db;
+
+    public static String getMD5(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String hashtext = number.toString(16);
+
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        }
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static String encrypt(String key, String iv, String cleartext) throws Exception {
-        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        Cipher cipher = Cipher.getInstance("RSA");
         SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes(), "AES");
         IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes());
         cipher.init(Cipher.ENCRYPT_MODE, skeySpec, ivParameterSpec);
@@ -28,18 +49,22 @@ public class GenerateKey {
     }
     public static void main(String[] args) {
         try {
+            //fffb1c4b321f9caafe97608b69b70c3d
+            //fffb1c4b321f9caafe97608b69b70c3d
+            //fffb1c4b321f9caafe97608b69b70c3d
+            String email = "123456";
+            String encriptado = Utilidades.Encriptar(email);
+            System.out.println(encriptado);
+            String desencriptado = Utilidades.Desencriptar(encriptado);
+            System.out.println(desencriptado);
 
-            String email = "chemalug@intecap.edu.gt";
-            String resp = GenerateKey.encrypt("0123456789abcdef","4194374941943749",email);
+            /*String resp = GenerateKey.encrypt("0123456789abcdef","4194374941943749",email);
             Usuario usuario = new Usuario();
             usuario.setUsuario(email);
             usuario.setToken(resp);
             usuario.setClave(GenerateKey.encrypt("0123456789abcdef","4194374941943749","123456"));
-            guardarUsuario(usuario);
+            guardarUsuario(usuario);*/
             //verificarUsuario(email);
-
-            //fDgiaUJmchZZ0CSCoSAd
-            //-L34nzFhclDNeCN74Bgb
         } catch (Exception e) {
             e.printStackTrace();
         }
