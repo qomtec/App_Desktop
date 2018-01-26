@@ -52,7 +52,7 @@ public class GenerateKey {
             //fffb1c4b321f9caafe97608b69b70c3d
             //fffb1c4b321f9caafe97608b69b70c3d
             //fffb1c4b321f9caafe97608b69b70c3d
-            String email = "123456";
+            String email = "123456";//valores
             String encriptado = Utilidades.Encriptar(email);
             System.out.println(encriptado);
             String desencriptado = Utilidades.Desencriptar(encriptado);
