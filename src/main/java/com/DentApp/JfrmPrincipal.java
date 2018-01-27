@@ -1,11 +1,18 @@
 package com.DentApp;
 
+import com.DentApp.utils.GenerateKey;
+import com.DentApp.utils.Usuario;
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.database.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -19,9 +26,14 @@ import javafx.stage.StageStyle;
 
 import java.awt.*;
 import java.io.Console;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.concurrent.CountDownLatch;
 
-public class JfrmPrincipal extends Application {
+public class JfrmPrincipal extends Application implements Initializable {
     public static void main(String[] args) {
         launch(args);
     }
@@ -41,6 +53,7 @@ public class JfrmPrincipal extends Application {
             primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.show();
 
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,6 +68,7 @@ public class JfrmPrincipal extends Application {
     private void mostrarformulario(String formulario, String titulo){
 
         try {
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource(formulario));
             Parent root1 = (Parent) loader.load();
             Scene scene = new Scene(root1);
@@ -94,7 +108,55 @@ public class JfrmPrincipal extends Application {
         stage.close();
     }
     public void btn_ingresarOnAction(Event e) throws IOException {
-        p_principal.setDisable(false);
+
+        verificarUsuario(txt_usuario.getText());
+
+    }
+    private FirebaseDatabase db;
+    private void inicializar(){
+        try {
+            FileInputStream serviceAccount = new FileInputStream("./src/main/token.json");
+            FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
+                    .setDatabaseUrl("https://mi-proyecto-123456.firebaseio.com/")
+                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                    .build();
+            FirebaseApp.initializeApp(firebaseOptions);
+            db = FirebaseDatabase.getInstance();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void verificarUsuario(String email){
+        DatabaseReference tbl = db.getReference("/tbl_Usuario");
+        try {
+            String valor = GenerateKey.getMD5(email).substring(0,20);
+            DatabaseReference  child = tbl.child(valor);
+            CountDownLatch transaccion = new CountDownLatch(1);
+            child.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    transaccion.countDown();
+                    Usuario usuario = snapshot.getValue(Usuario.class);
+                    if (txt_usuario.getText().equals(usuario.getUsuario())){
+                        if(GenerateKey.getMD5(txt_pass.getText()).equals(usuario.getClave()))
+                        p_principal.setDisable(false);
+                    }
+                }
+                @Override
+                public void onCancelled(DatabaseError error) {
+
+                }
+            });
+            transaccion.await();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        inicializar();
+    }
 }
