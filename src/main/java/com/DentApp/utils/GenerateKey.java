@@ -49,22 +49,15 @@ public class GenerateKey {
     }
     public static void main(String[] args) {
         try {
-            //fffb1c4b321f9caafe97608b69b70c3d
-            //fffb1c4b321f9caafe97608b69b70c3d
-            //fffb1c4b321f9caafe97608b69b70c3d
-            String email = "123456";//valores
-            String encriptado = Utilidades.Encriptar(email);
-            System.out.println(encriptado);
-            String desencriptado = Utilidades.Desencriptar(encriptado);
-            System.out.println(desencriptado);
+            String email = "jose.miranda@intecap.edu.gt";
+            String resp = getMD5(email);
 
-            /*String resp = GenerateKey.encrypt("0123456789abcdef","4194374941943749",email);
             Usuario usuario = new Usuario();
             usuario.setUsuario(email);
             usuario.setToken(resp);
-            usuario.setClave(GenerateKey.encrypt("0123456789abcdef","4194374941943749","123456"));
-            guardarUsuario(usuario);*/
-            //verificarUsuario(email);
+            usuario.setClave(getMD5("123456"));
+            //guardarUsuario(usuario);
+            verificarUsuario(email);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -110,7 +103,7 @@ public class GenerateKey {
         inicializar();
         DatabaseReference tbl = db.getReference("/tbl_Usuario");
         try {
-            String valor = GenerateKey.encrypt("0123456789abcdef","4194374941943749",email).substring(0,20);
+            String valor = getMD5(email).substring(0,20);
             DatabaseReference  child = tbl.child(valor);
             CountDownLatch transaccion = new CountDownLatch(1);
             child.addValueEventListener(new ValueEventListener() {
